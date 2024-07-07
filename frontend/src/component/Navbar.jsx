@@ -23,9 +23,9 @@ function Navbar() {
 
   const FILMS_QUERY = gql`
     query Query($parentId: String!) {
-      student_search(searchQuery: $parentId) {
+      studentSearch(searchQuery: $parentId) {
         name
-        roll_no
+        rollNo
       }
         }
       `;
