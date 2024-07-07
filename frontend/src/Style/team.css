@@ -1,0 +1,39 @@
+.modalme{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-contentme{
+    padding: 20px;
+    /* width: 400px; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.765);
+    color: aliceblue;
+    font-weight: 900;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background: rgba( 14, 14, 14, 0.4 );
+box-shadow: 0 8px 32px 0 rgba(243, 243, 243, 0.37);
+border-radius: 10px;
+}
+.iconsocialmedia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color:aliceblue;
+  }
+  .closeshomepro{
+    position: relative;
+    top: 0px;
+    right:0px !important;
+    cursor: pointer;
+    color:aliceblue;
+  }
