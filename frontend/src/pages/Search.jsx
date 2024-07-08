@@ -13,11 +13,11 @@ const Search = () => {
 
   
   const FILMS_QUERY = gql`
- query ($searchtexts: String!) {
+ query Query($searchtexts: String!) {
 
   studentSearch(searchQuery: $searchtexts) {
         name
-        roll_no
+        rollNo
         year
         picture
         parentId
@@ -26,25 +26,25 @@ const Search = () => {
       
       children(rollNumber:$searchtexts) {
      name
-        roll_no
+        rollNo
         year
         picture
   }
   parent(rollNumber:$searchtexts) {
       name
-        roll_no
+        rollNo
         year
         picture
   }
   sibling(rollNumber:$searchtexts) {
      name
-        roll_no
+        rollNo
         year
         picture
   }
   student(rollNumber:$searchtexts) {
       name
-        roll_no
+        rollNo
         year
         picture
   }
@@ -56,6 +56,7 @@ const Search = () => {
   const { loading, error, data } = useQuery(FILMS_QUERY, {
     variables: { searchtexts},
   });
+  console.log(data)
   if(!loading){
 
     const datas = data.studentSearch[0].parentId
