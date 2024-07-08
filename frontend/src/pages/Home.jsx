@@ -41,7 +41,6 @@ const Home = () => {
        )}                    
       </div>
         <DTree/>
-        {/* <img src="https://picsur.org/i/c4ed4a18-b261-426d-a7d1-586d1a451c0b.png" alt="" /> */}
        </div>
     </>
   )

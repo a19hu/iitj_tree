@@ -29,10 +29,9 @@ function Navbar() {
       }
         }
       `;
-  const data = useQuery(FILMS_QUERY, {
+  const {data,error,loading} = useQuery(FILMS_QUERY, {
     variables: { parentId },
   });
-  console.log(data.data)
   // if (error) return <p>Error </p>;
   const toggleModal=(Id)=>{
     // toast.success("Successfully email send",
@@ -108,19 +107,19 @@ function Navbar() {
             <div className="modal-contenthelpsu">
 
               <div className='searchtext'>
-                {/* {
+                {
                   loading ? <p>Loading...</p> :
                        data.studentSearch.length > 0  ?
               data.studentSearch.slice(0,5).map((student, index) => (
                 <div key={index}
-                  onClick={() => toggleModal(student.roll_no)}
+                  onClick={() => toggleModal(student.rollNo)}
                 >
                  
-                    {student.name} ({student.roll_no})
+                    {student.name} ({student.rollNo})
                 </div>
               )) : 'No match with your name or roll number'
             
-                } */}
+                }
                 
               </div>
 

@@ -4,7 +4,6 @@ import Navbar from "./component/Navbar";
 import Home from "./pages/Home";
 import Search from './pages/Search';
 import React from 'react';
-import MinLoader from './component/MinLoader';
 import { DataProvider } from './context/DataContext';
 import ImageTree from './pages/ImageTree';
 function App() {
@@ -14,10 +13,9 @@ function App() {
     <Navbar />
    <Routes>
      <Route path="/" element={<Home/>} />
-     <Route path="/minLoader" element={<MinLoader/>} />
      <Route path="/search" element={<Search />} />
      <Route path="/ImageTree" element={<ImageTree />} />
-     <Route path="*" element={<MinLoader />} />
+     {/* <Route path="*" element={<MinLoader />} /> */}
    </Routes>
      </DataProvider>
  </BrowserRouter>
