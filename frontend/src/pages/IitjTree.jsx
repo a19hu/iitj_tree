@@ -21,13 +21,13 @@ const IitjTree = ({ data }) => {
  
   const parentNode = {
     name:parentid.name,
-    rollNo: parentid.roll_no,
+    rollNo: parentid.rollNo,
     picture: parentid.picture,
     children: []
   };
   const studentNode = {
     name:studentid.name,
-    rollNo: studentid.roll_no,
+    rollNo: studentid.rollNo,
     picture: studentid.picture,
     children: []
   };
@@ -35,7 +35,7 @@ const IitjTree = ({ data }) => {
   siblings.forEach(sibling => {
     const siblingNode = {
     name:sibling.name,
-      rollNo: sibling.roll_no,
+      rollNo: sibling.rollNo,
       picture: sibling.picture,
       children: []
     };
@@ -44,19 +44,18 @@ const IitjTree = ({ data }) => {
   children.forEach(child => {
     const childNode = {
     name:child.name,
-      rollNo: child.roll_no,
+      rollNo: child.rollNo,
       picture: child.picture,
     };
     studentNode.children.push(childNode);
   });
 
   treeDatas.push(parentNode);
-  // console.log(treeDatas)
   const [searchId, setSearchId] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (Id) => {
-    console.log(Id)
+    console.log('tkjh',Id)
     setShowModal(true)
     setSearchId(Id)
   };
