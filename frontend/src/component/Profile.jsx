@@ -9,10 +9,12 @@ import { useData } from '../context/DataContext';
 function Profile({ toggleModal, searchId }) {
   const { updatesearch } = useData()
    const FILMS_QUERY = gql`
-    query Query($parentId: String!) {
-      studentSearch(searchQuery: $parentId) {
+    query Query($searchId: String!) {
+      studentSearch(searchQuery: $searchId) {
         name
         rollNo
+        year
+        picture
         
       }
         }
@@ -23,13 +25,11 @@ function Profile({ toggleModal, searchId }) {
   if (error) return <p>Connection Error..</p>;
   const toggleModals = (Id) => {
     updatesearch(Id)
-    console.log(Id)
   }
   if(!loading){
 
     data = data.studentSearch[0]
   }
-
   return (
     <div className="modalprofile">
       <div className="modal-contentprofile">
