@@ -1,18 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Student
-import pandas as pd
-import csv, io
-from django.contrib import messages
 from rest_framework.views import APIView
-from rest_framework.response import Response
-from .serializers import StudentSerializer
-# Create your views here.
 from django.http import JsonResponse
-
-
-
-
 
 class ResolveAllTreeNodes(APIView):
     def get(self, request, format=None):
@@ -51,41 +39,9 @@ class ResolveAllTreeNodes(APIView):
             return serialized_node
         
         tree_data = [build_tree(node) for node in root_nodes]
+        print('inter')
         
         return JsonResponse(tree_data, status=200, safe=False)
      except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
-
-def index(request):
-    return HttpResponse(" ")
-
-
-def upload(request):
-    # data = Profile.objects.all()
-    data = Student.objects.all()
-    prompt = {
-        'order': 'Order of the CSV should be  roll_no,name,year,parentId,linkedIn,picture',
-        'profiles': data    
-              }
-    if request.method == "GET":
-        return render(request, 'excelImport.html', prompt)
-    csv_file = request.FILES['file']
-    if not csv_file.name.endswith('.csv'):
-        messages.error(request, 'THIS IS NOT A CSV FILE')
-    data_set = csv_file.read().decode('UTF-8')
-    io_string = io.StringIO(data_set)
-    print('hello')
-    next(io_string)
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-       created = Student.objects.update_or_create(
-        roll_no=column[0].upper(),
-        name=column[1],
-        year=column[2],
-        parentId=column[3].upper(),
-        linkedIn=column[4],
-        picture=column[5],
-        
-       )
-    
-    return render(request, 'excelImport.html')
