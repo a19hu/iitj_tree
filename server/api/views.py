@@ -23,7 +23,7 @@ class ResolveAllTreeNodes(APIView):
                 if student_dict.get(parent_id):
                     student_dict[parent_id]['children'].append(student_data)
                 else:
-                    print(f"Parent with ID {parent_id} not found for student with ID {student_data['roll_no']}")
+                    # print(f"Parent with ID {parent_id} not found for student with ID {student_data['roll_no']}")
                     root_nodes.append(student_data)
             else:
                 root_nodes.append(student_data)
@@ -39,9 +39,7 @@ class ResolveAllTreeNodes(APIView):
             return serialized_node
         
         tree_data = [build_tree(node) for node in root_nodes]
-        print('inter')
         
         return JsonResponse(tree_data, status=200, safe=False)
      except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
-    
