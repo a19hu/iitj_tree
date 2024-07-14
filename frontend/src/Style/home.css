@@ -3,10 +3,8 @@
  }
 .typewriterStyle{
     position: absolute;
-  /* top: 5%; */
   width: 100%;
   height: 100vh;
-  background: linear-gradient(245.63deg, #C6F4F8 3.61%, #DDD1DE 21.6%, #BCE4EF 55.21%, #AFE1EB 97.34%);
 }
 .help{
   position: fixed;

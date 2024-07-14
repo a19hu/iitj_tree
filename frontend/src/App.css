@@ -1,6 +1,7 @@
 body{
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
+  background-color: #BCE4EF;
 }
 
 ::-webkit-scrollbar {

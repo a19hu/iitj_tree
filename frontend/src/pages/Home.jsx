@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import '../Style/home.css'
 import { IoIosInformationCircle } from 'react-icons/io';
-import Help from '../component/Help';
 import DTree from './DTree';
 import Team from './Team';
 
@@ -21,10 +20,6 @@ const Home = ({data}) => {
       </div>
       <div className="typewriterStyle" >
       <div className="help">
-      {/* <IoIosInformationCircle style={{ fontSize: '2.5rem', color: 'white' }} onClick={toggleModal} /> */}
-      {showModal && (
-                                <Help toggleModal={toggleModal} showModal={showModal}/>
-                            )}
        <div className='team' onClick={team}>Team</div> 
        {teamshow && (
         <Team team={team} teamshow={teamshow}/>

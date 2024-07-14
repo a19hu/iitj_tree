@@ -1,30 +1,25 @@
 .modalprofile {
     position:fixed;
-    top: 26%;
+    top: 28%;
     right: 1%;
-    /* width: 20%; */
     height: 100%;
-    /* backdrop-filter: blur(1px); */
     display: flex;
-    /* justify-content: center; */
     align-items: center;
   }
   
   .modal-contentprofile {
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(20, 20, 20, 0.3);
+    box-shadow: 0 0 10px rgba(20, 20, 20, 0.261);
     padding: 20px;
 
   }
   .modal-contentprofile p span{
-    font-weight: 400;
     text-transform: uppercase;
   }
   
   .closespro {
     position: relative;
     top: -180px;
-    color: aliceblue;
     font-size: 1.7rem;
     cursor: pointer;
   }
@@ -40,9 +35,22 @@
   }
   .iconbutton{
     color: #04a7ff5d;
-    /* font-weight: 800px; */
     font-size: 1.5rem;
     position: relative;
     left: 30%;
   }
+     .containerimag {
+       display: block;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
   
+     .detailcontainer {
+       display: block;
+     }
+  
+     .containerimag img {
+       height: 200px;
+       width: 200px;
+     }
