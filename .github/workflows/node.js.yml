@@ -2,8 +2,6 @@ name: CI/CD
 
 on:
   push:
-    paths:
-      - './frontend'
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
@@ -22,9 +20,9 @@ jobs:
     - name : checkout code
       uses: actions/checkout@v4
     - name: Install dependencies
-      run: npm install
+      run: cd frontend && npm install
     - name: Build react app
-      run: npm run build
+      run: cd frontend && npm run build
     # - name: Use Node.js ${{ matrix.node-version }}
     #   uses: actions/setup-node@v3
     #   with:
