@@ -11,15 +11,12 @@
 }
 .modal-contentme{
     padding: 20px;
-    /* width: 400px; */
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.765);
     color: aliceblue;
     font-weight: 900;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
-    background: rgba( 14, 14, 14, 0.4 );
+    background: rgba(20, 94, 135, 0.75);
 box-shadow: 0 8px 32px 0 rgba(243, 243, 243, 0.37);
 border-radius: 10px;
 }

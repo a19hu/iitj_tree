@@ -15,7 +15,7 @@ const Homeprofile = ({rollNo}) => {
       }
     }`;
 
-  var { loading, error, data } = useQuery(FILMS_QUERY, {
+  var { loading, data } = useQuery(FILMS_QUERY, {
     variables: { rollNo },
   });
   if (!loading) {

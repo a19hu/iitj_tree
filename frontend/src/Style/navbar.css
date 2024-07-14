@@ -144,11 +144,72 @@
      /* End position: move down to original position */
    }
  }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     .logotexts {
     display: none;
     }
-  }
 
+
+  }
+.phone_button{
+  display: none;
+}
+ .phonenavebar {
+   position: fixed;
+   top: 70px;
+   left: 10px;
+   display: flex;
+   justify-content: end;
+ }
+
+ .phonenavebar_container {
+   background-color: rgba(20, 94, 135, 0.75);
+   padding: 20px;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(20, 20, 20, 0.3);
+   display: flex;
+   justify-content: start;
+   align-items: start;
+   flex-direction: column;
+   height: 200px;
+   width: 100px;
+ }
+ .phonenavebar_container a{
+  display: inline-block;
+    position: relative;
+    color: #979797;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+ }
+ @media screen and (max-width: 750px) {
+.app_link {
+    gap: 10px;
+  }
+ }
+
+  @media screen and (max-width: 600px) {
+  .treeD {
+      display: none;
+    }
+  .logo{
+    display: none;
+  }
+  .phone_button{
+  display: flex;
+}
+.header {
+  margin: 24px 10px;
+  padding: 10px 10px;
+}
+
+.modalresult {
+  top: 90px;
+  right: 5px;
+}
+ }
+ @media screen and (max-width: 450px) {
+
+ }
   
     

@@ -8,8 +8,9 @@
   }
   
   .modal-contentprofile {
+    background-color: rgb(165, 201, 221);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(20, 20, 20, 0.261);
+    box-shadow: 2px 5px 10px rgba(20, 20, 20, 0.261);
     padding: 20px;
 
   }
@@ -34,8 +35,9 @@
     font-size: 1.5rem;
   }
   .iconbutton{
-    color: #04a7ff5d;
+    color: #0000005d;
     font-size: 1.5rem;
+    font-weight: 900;
     position: relative;
     left: 30%;
   }

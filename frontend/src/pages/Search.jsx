@@ -6,11 +6,21 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Search = () => {
-  // const { searchtexts } = useData()
   const navigate = useNavigate();
   var { id } = useParams();
-  const searchtexts=id.toUpperCase();
-  // console.log(searchtexts)
+  const searchtexts=window.atob(id);
+   const FILMS_QUERYS = gql`
+ query Query($searchtexts: String!) {
+  parent(rollNumber:$searchtexts) {
+      name
+      rollNo
+  }
+  }
+  `;
+  const DATA = useQuery(FILMS_QUERYS, {
+    variables: { searchtexts},
+  });
+
   const FILMS_QUERY = gql`
  query Query($searchtexts: String!) {
 
@@ -21,8 +31,6 @@ const Search = () => {
         picture
         parentId
       }
-  
-      
       children(rollNumber:$searchtexts) {
      name
         rollNo
@@ -47,33 +55,28 @@ const Search = () => {
         year
         picture
   }
-
-  
     }
   `;
   
-  const { loading, error, data } = useQuery(FILMS_QUERY, {
+  const { loading,data } = useQuery(FILMS_QUERY, {
     variables: { searchtexts},
   });
-  console.log(data)
-  if(!loading){
-    const datas = data.studentSearch[0].parentId
-    if(datas == null || data.parent == null){
-      // navigate('/');
-    //  return  navigate('/');
-    }
+    console.log(DATA.data)
+    if(DATA.loading) return <div className="tree">Loading...</div>
+  if(!DATA.data ) {
+toast.info("parent id not found",{
+      autoClose:2000
+     })
+    return navigate('/')
   }
-  if (error) return <p> connection error...</p>;
   return (
     <div className='topmargin'>
+    <ToastContainer />
       <div className="text">
         <div className='treediv'>
-          {loading ? <p>Loading...</p> : data.studentSearch[0].parentId == null || data.parent == null ? navigate('/') : <IitjTree data={data} />}
+          {loading ? <div className="tree">Loading...</div> : data.studentSearch[0].parentId == null || data.parent == null ? navigate('/') : <IitjTree data={data} />}
               </div>
-        <ToastContainer />
-
       </div>
-
     </div>
   )
 }

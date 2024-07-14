@@ -13,16 +13,13 @@ function Profile({ toggleModal, searchId }) {
         rollNo
         year
         picture
-        
       }
         }
       `;
-  var { loading, error, data } = useQuery(FILMS_QUERY, {
+  var { loading, data } = useQuery(FILMS_QUERY, {
     variables: { searchId },
   });
-  if (error) return <p>Connection Error..</p>;
   if(!loading){
-
     data = data.studentSearch[0]
   }
   return (
@@ -35,11 +32,8 @@ function Profile({ toggleModal, searchId }) {
         <p><span>Name:</span> {data.name}</p>
         <p><span>ROLL NUMBER : </span>{data.rollNo}</p>
         <p><span>BATCH OF {parseInt(data.year)+4} </span></p>
-
-        <a href={data.linkedIn} target='_blank' >
-        <FaLinkedin  className='linkedicon' />
-        </a>
-        <Link to={`/search/${data.rollNo}`} >
+        <a href={data.linkedIn} ><FaLinkedin  className='linkedicon' /></a>
+        <Link to={`/search/${window.btoa(data.rollNo)}`} >
                 <FaChevronRight  className='iconbutton' />
         </Link>
           </>

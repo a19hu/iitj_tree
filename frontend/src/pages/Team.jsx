@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react'
 import '../Style/team.css'
 import { FaLinkedin,FaGithub, FaInstagram  } from 'react-icons/fa';
-
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
@@ -24,12 +23,11 @@ const Team = ({team,teamshow}) => {
             
           <FaLinkedin style={{ fontSize: '2rem', color: 'white' }} onClick={team}/>
             </Link>
-            <Link>
+            <a href='https://github.com/a19hu/'>
             
           <FaGithub style={{ fontSize: '2rem', color: 'white' }} onClick={team}/>
-            </Link>
+            </a>
             <Link>
-            
           <FaInstagram style={{ fontSize: '2rem', color: 'white' }} onClick={team}/>
             </Link>
             </div>
