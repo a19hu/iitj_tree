@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
-import background from "../image/background.jpeg";
 import '../Style/home.css'
 import { IoIosInformationCircle } from 'react-icons/io';
 import Help from '../component/Help';
 import DTree from './DTree';
 import Team from './Team';
 
-const Home = () => {
+const Home = ({data}) => {
   const [showModal, setShowModal] = useState(false);
   const [teamshow,setteamshow] = useState(false)
   const toggleModal = () => {
@@ -16,22 +15,13 @@ const Home = () => {
     setteamshow(!teamshow)
   }
 
-   const mystyle={
-    backgroundImage: `url(${background})`,
-    backdropFilter: "blur(6px)",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    height: "100vh",
-    opacity: '0.8',
-   };
-  
   return (
     <>
-    <div className="home" style={mystyle} >
+    <div className="home" >
       </div>
       <div className="typewriterStyle" >
       <div className="help">
-      <IoIosInformationCircle style={{ fontSize: '2.5rem', color: 'white' }} onClick={toggleModal} />
+      {/* <IoIosInformationCircle style={{ fontSize: '2.5rem', color: 'white' }} onClick={toggleModal} /> */}
       {showModal && (
                                 <Help toggleModal={toggleModal} showModal={showModal}/>
                             )}
@@ -40,7 +30,7 @@ const Home = () => {
         <Team team={team} teamshow={teamshow}/>
        )}                    
       </div>
-        <DTree/>
+        <DTree data={data}/>
        </div>
     </>
   )

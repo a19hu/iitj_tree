@@ -17,14 +17,14 @@
   position: absolute; 
   top: 0; 
   right: 50%;
-  border-top: 3px solid #ffffff;
+  border-top: 3px solid #000000;
   width: 50%; 
   height: 20px;
 }
 .tree li::after{
   right: auto; 
   left: 50%;
-  border-left: 3px solid #ffffff;
+  border-left: 3px solid #000000;
 }
 
 .tree li:only-child::after, .tree li:only-child::before {
@@ -37,7 +37,7 @@
   border: 0 none;
 }
 .tree li:last-child::before{
-  border-right: 3px solid #ffffff;
+  border-right: 3px solid #000000;
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
@@ -123,6 +123,3 @@
   width: fit-content;
 }
 
-.circle{
-  fill: #f58e45;
-}
