@@ -2,6 +2,9 @@
   "name": "family_tree",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://a19hu.github.io/iitj",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
   "dependencies": {
     "@apollo/client": "^3.9.5",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -14,6 +17,7 @@
     "axios": "^1.6.7",
     "d3": "^7.8.5",
     "dotenv": "^16.4.5",
+    "gh-pages": "^6.1.1",
     "graphql": "^16.8.1",
     "http-proxy-middleware": "^3.0.0",
     "react": "^18.2.0",
