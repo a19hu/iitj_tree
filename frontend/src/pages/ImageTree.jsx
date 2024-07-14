@@ -1,22 +1,10 @@
 import { ForceGraph3D } from 'react-force-graph';
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 import * as THREE from 'three';
 import defaultimage from '../image/download.jpeg'
 import logo from '../image/logo.png'
 
 const ImageTree = ({ data }) => {
-//    const [load,setload]=useState(true)
-//   useEffect(()=>{
-//  setTimeout(
-//     ()=>{
-//     setload(false)
-//     },600)
-//   },[])
-
-  if (!data) return <p>Loading</p>;
- 
-    
-
   const nodes = [{
     id: 'All',
     user: 'IITJ',
@@ -70,20 +58,25 @@ const ImageTree = ({ data }) => {
     nodes: nodes,
     links: links
   }
-
+//  if any quries regrading 3D Graph read this repo 
+// https://github.com/vasturiano/react-force-graph?tab=readme-ov-file
   return (
     <div className='imagetree' >
       <ForceGraph3D
         backgroundColor={'#BCE4EF'}
-        // nodeColor={() => 'black'} 
-        linkColor={'black'}
+        linkColor={'red'}
+        linkOpacity={1}
+        nodeRelSize={10}
         width={window.innerWidth}
         height={window.innerHeight}
         linkCurvature={1}
         linkCurveRotation={2}
         linkWidth={2}
+        // minZoom={2}
+        // maxZoom={5}
         graphData={graphdata}
         nodeLabel={node => `${node.user}: ${node.description}`}
+        nodeColor={'black'}
         nodeAutoColorBy="user"
         linkDirectionalParticles={2}
         nodeThreeObject={({ img }) => {

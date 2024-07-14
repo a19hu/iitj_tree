@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Style/profile.css'
-import '../Style/homeprofile.css'
 import { useQuery, gql, } from "@apollo/client";
 import demo from '../image/download.jpeg'
 const Homeprofile = ({rollNo}) => {
@@ -16,15 +15,15 @@ const Homeprofile = ({rollNo}) => {
       }
     }`;
 
-  var { loading, error, data } = useQuery(FILMS_QUERY, {
+  var { loading, data } = useQuery(FILMS_QUERY, {
     variables: { rollNo },
   });
   if (!loading) {
     data = data.studentSearch[0]
   }
   return (
-     <div className="modalhprop">
-          <div className="modal-contenthomeprofile">
+     <div className="modalprofile">
+      <div className="modal-contentprofile">
               {loading ? <p>Loading...</p> : 
               <>
             <div className='containerimag'>
