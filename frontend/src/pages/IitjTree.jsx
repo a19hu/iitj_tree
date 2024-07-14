@@ -55,7 +55,6 @@ const IitjTree = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (Id) => {
-    console.log('tkjh',Id)
     setShowModal(true)
     setSearchId(Id)
   };

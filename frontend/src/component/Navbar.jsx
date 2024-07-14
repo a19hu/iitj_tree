@@ -1,25 +1,15 @@
 import "../Style/navbar.css";
-import '../Style/searchsugg.css'
 import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
-import React,{useState} from "react";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useNavigate } from 'react-router-dom';
 import { useData } from "../context/DataContext";
-import 'react-toastify/dist/ReactToastify.css';
-function Navbar() {
+
+function Navbar({error}) {
   const navigate = useNavigate();
   const { setSearchtext, updateDataId } = useData();
-  const [show, setShow] = useState(true);
   const [parentId, setParentId] = useState('');
-  
-  const handleback=()=>{
-    setParentId('')
-    setShow(!show) 
-  }
 
   const FILMS_QUERY = gql`
     query Query($parentId: String!) {
@@ -29,110 +19,75 @@ function Navbar() {
       }
         }
       `;
-  const {data,error,loading} = useQuery(FILMS_QUERY, {
+  const { data, loading } = useQuery(FILMS_QUERY, {
     variables: { parentId },
   });
-  // if (error) return <p>Error </p>;
-  const toggleModal=(Id)=>{
-    // toast.success("Successfully email send",
-    //   {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //     closeOnClick: true,
-    //     progress: undefined,
-    //     hideProgressBar: false,
-    //     pauseOnHover: true,
-    //   }
-    // ); 
-    updateDataId(Id)
-    navigate('/search');
+    const handleinput=(e)=>{
+      if(!error){
+        setParentId(e.target.value)
+      }
+    }
+  const toggleModal = (Id) => {
+    // updateDataId(Id)
+    navigate(`/search/${Id}`);
     setParentId('')
-    setShow(!show)
-     
   }
   return (
-    <>{
-      show ? 
-    <div className="header">
-      <div className="logo">
-            <Link to='/'>
-
-              <img src={logo} alt="Logo" />
-            </Link>
-            <div className="logotexts">
-              <p>Indian Institute Of Technology Jodhpur</p>
-              <p>भारतीय प्रौद्योगिकी संस्थान जोधपुर</p>
-            </div>
-      </div>
-      <div className="app_link">
+    <div className="Navbar">
+      <div className="header">
+        <div className="logo">
+          <Link to='/'>
+            <img src={logo} alt="Logo" />
+          </Link>
+          <div className="logotexts">
+            <p>Indian Institute Of Technology Jodhpur</p>
+            <p>भारतीय प्रौद्योगिकी संस्थान जोधपुर</p>
+          </div>
+        </div>
+        <div className="app_link">
           <div className="treeD">
-            <Link to="/">
+            <Link to="/" style={window.location.pathname=='/' ? {color:'black'} : null}>
               Home
             </Link>
           </div>
           <div className="treeD">
-            <Link to="/ImageTree">
+            <Link to="/ImageTree" style={window.location.pathname=='/ImageTree' ? {color:'black'} : null}>
               Image tree
             </Link>
           </div>
-          <div onClick={() => setShow(!show)} className="search">
-              <IoSearch size={20} color="white" />
-
-
-          </div>
-         
-          <ToastContainer />
-      </div>
-
-    </div>
-    :
-    <>
-    <div className=" header_search">
-            <IoMdArrowRoundBack onClick={handleback} color="white" size={20}   style={{cursor:"pointer"}}/>
-
-        <div>
-         
-            <input
-              type="text"
-              className="searchInput"
-              placeholder="Search ..."
-              value={parentId}
-              onChange={(e) => setParentId(e.target.value)}
-            />
+               <div className=" header_search">
+              <input
+                  type="text"
+                  className="searchInput"
+                  placeholder="Search ..."
+                  value={parentId}
+                  onChange={(e) => handleinput(e) }
+                />
         </div>
-
-    </div>
-    {parentId ? 
-          <div className='modalresult'>
-            <div className="modal-contenthelpsu">
-
-              <div className='searchtext'>
-                {
-                  loading ? <p>Loading...</p> :
-                       data.studentSearch.length > 0  ?
-              data.studentSearch.slice(0,5).map((student, index) => (
-                <div key={index}
-                  onClick={() => toggleModal(student.rollNo)}
-                >
-                 
-                    {student.name} ({student.rollNo})
+        {parentId ? 
+              <div className='modalresult'>
+                <div className="modal-contenthelpsu">
+                  <div className='searchtext'>
+                    {
+                      loading ? <p>Loading...</p> :
+                           data.studentSearch.length > 0  ?
+                  data.studentSearch.slice(0,7).map((student, index) => (
+                    <div key={index}
+                      onClick={() => toggleModal(student.rollNo)}
+                    >
+                        {student.name} ({student.rollNo})
+                    </div>
+                  )) : 'No match with your name or roll number'
+                    }
+                  </div>
                 </div>
-              )) : 'No match with your name or roll number'
-            
-                }
-                
               </div>
-
-            </div>
-          </div>
-
-          : <div></div>
-}
-    </>
+              : null
     }
+        </div>
+      </div>
+    </div>
       
-
-    </>
   );
 }
 

@@ -1,17 +1,16 @@
 import React from 'react';
 import { useQuery, gql, } from "@apollo/client";
-import "../Style/serachreasult.css";
 import IitjTree from './IitjTree';
-import { useData } from '../context/DataContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Search = () => {
-  const { searchtexts } = useData()
+  // const { searchtexts } = useData()
   const navigate = useNavigate();
-
-  
+  var { id } = useParams();
+  const searchtexts=id.toUpperCase();
+  // console.log(searchtexts)
   const FILMS_QUERY = gql`
  query Query($searchtexts: String!) {
 
@@ -52,32 +51,18 @@ const Search = () => {
   
     }
   `;
-
+  
   const { loading, error, data } = useQuery(FILMS_QUERY, {
     variables: { searchtexts},
   });
   console.log(data)
   if(!loading){
-
     const datas = data.studentSearch[0].parentId
     if(datas == null || data.parent == null){
-      toast.success("Successfully email send",
-        {
-          position: "top-center",
-          autoClose: 5000,
-          closeOnClick: true,
-          progress: undefined,
-          hideProgressBar: false,
-          pauseOnHover: true,
-        }
-      );  
       // navigate('/');
     //  return  navigate('/');
     }
   }
-
-
-  // if (loading) return <p>Loading...</p>; 
   if (error) return <p> connection error...</p>;
   return (
     <div className='topmargin'>

@@ -17,6 +17,7 @@
     "graphql": "^16.8.1",
     "http-proxy-middleware": "^3.0.0",
     "react": "^18.2.0",
+    "react-circular-progressbar": "^2.1.0",
     "react-d3-tree": "^3.6.2",
     "react-dom": "^18.2.0",
     "react-force-graph": "^1.44.3",
