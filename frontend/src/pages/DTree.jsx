@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Tree from 'react-d3-tree';
 import '../Style/home.css'
-import Homeprofile from '../component/Homeprofile';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Profile from '../component/Profile';
 
 const DTree = ({data}) => {
   const [roll,setroll]=useState()
@@ -22,19 +22,6 @@ const DTree = ({data}) => {
 });
   new_data.push(all_parent)
 
- 
-  // const generateDiagonalPath = (source, target) => {
-  //   return `M${source.y},${source.x}C${source.y},${(source.x + target.x) / 2} ${target.y},${(source.x + target.x) / 2} ${target.y},${target.x}`;
-  // };
-  // const renderCustomLink = ({ source, target }) => (
-  //   <path
-  //     d={generateDiagonalPath(source, target)}
-  //     fill="none"
-  //     stroke="white"
-  //     strokeWidth={3}
-  //   />
-  // );
-  
   const renderCustom = ({ nodeDatum, toggleNode , links }) => {
     const str= nodeDatum.name
   const name= str.slice(0,19) + '' 
@@ -68,14 +55,14 @@ const DTree = ({data}) => {
   });
   
   const handleNodeMouseOver = (nodeDatum, event) => {
-    if(nodeDatum.name !='All'){
+    if(nodeDatum.name !=='All'){
       setroll(nodeDatum)
       setShowModal(true)
 
     }
   };
   const handleNodeMouseOut = (nodeData, event) => {
-    if(nodeData.name !='All'){
+    if(nodeData.name !=='All'){
       setShowModal(false)
     }
   };
@@ -86,7 +73,7 @@ const DTree = ({data}) => {
   return (
     <>
     {showModal && (
-          <Homeprofile  rollNo={roll.rollNo} />
+          <Profile  rollNo={roll.rollNo} />
                             )}
     <Tree data={new_data} 
     scaleExtent={{

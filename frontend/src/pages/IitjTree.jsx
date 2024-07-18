@@ -70,7 +70,7 @@ const IitjTree = ({ data }) => {
               </div>
               </div>
                   {showModal && (
-                    <Profile toggleModal={toggleModals} searchId={searchId} />
+                    <Profile toggleModal={toggleModals} rollNo={searchId} />
                   )}
               {
                 item.children && item.children.length ?

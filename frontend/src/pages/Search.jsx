@@ -9,12 +9,12 @@ const Search = () => {
   const navigate = useNavigate();
   var { id } = useParams();
   const searchtexts=window.atob(id);
-   const FILMS_QUERYS = gql`
- query Query($searchtexts: String!) {
-  parent(rollNumber:$searchtexts) {
+  const FILMS_QUERYS = gql`
+   query Query($searchtexts: String!) {
+    parent(rollNumber:$searchtexts) {
       name
       rollNo
-  }
+    }
   }
   `;
   const DATA = useQuery(FILMS_QUERYS, {
