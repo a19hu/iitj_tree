@@ -80,7 +80,7 @@ const DTree = ({data}) => {
       min: 0.25, 
       max: 2
     }}
-    zoom={1}
+    zoom={0.3}
     zoomable={true}
     linkClassName={"custom-link"}
     depthFactor={200}
