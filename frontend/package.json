@@ -25,6 +25,7 @@
     "react-d3-tree": "^3.6.2",
     "react-dom": "^18.2.0",
     "react-force-graph": "^1.44.3",
+    "react-full-screen": "^1.1.1",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.22.1",
     "react-scripts": "^5.0.1",

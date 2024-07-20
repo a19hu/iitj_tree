@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import '../Style/home.css'
 import DTree from './DTree';
 import Team from './Team';
-
 const Home = ({data}) => {
   const [teamshow,setteamshow] = useState(false)
   const team=()=>{
@@ -10,6 +9,7 @@ const Home = ({data}) => {
   }
 
   return (
+
     <>
     <div className="home" >
     </div>
@@ -17,8 +17,10 @@ const Home = ({data}) => {
        <div className='team' onClick={team}>Team</div> 
        {teamshow && (
         <Team team={team} teamshow={teamshow}/>
-       )}                    
+       )}    
         <DTree data={data}/>
+
+
     </div>
     </>
   )

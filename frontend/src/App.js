@@ -32,6 +32,7 @@ function App() {
   }
 //  console.log(window.location.pathname)
   return (
+    
     <BrowserRouter>
     <DataProvider>
     <ToastContainer />

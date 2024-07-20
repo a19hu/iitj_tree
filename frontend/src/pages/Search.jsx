@@ -63,11 +63,13 @@ const Search = () => {
   });
     console.log(DATA.data)
     if(DATA.loading) return <div className="tree">Loading...</div>
-  if(!DATA.data ) {
-toast.info("parent id not found",{
+  if (!DATA.data){
+    toast.info("parent id not found",{
       autoClose:2000
      })
+        
     return navigate('/')
+
   }
   return (
     <div className='topmargin'>

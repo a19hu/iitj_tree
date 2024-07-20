@@ -1,5 +1,5 @@
 import { ForceGraph3D } from 'react-force-graph';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import defaultimage from '../image/download.jpeg'
 import logo from '../image/logo.png'
@@ -58,27 +58,43 @@ const ImageTree = ({ data }) => {
     nodes: nodes,
     links: links
   }
+   const linkMaterial = new THREE.MeshLambertMaterial({
+      color: 0xffffff, // Red color
+      opacity: 0.4,
+      transparent: false,
+    });
+     const getNodeColor = node => {
+    switch (node.group) {
+      case 1: return 'rgba(255,0,0,1)';  // Red for group 1
+      case 2: return 'rgba(0,255,0,1)';  // Green for group 2
+      default: return 'rgba(0,0,255,1)'; // Blue for others
+    }
+  };
+    const getNodeLabel = node => `${node.user}: ${node.description}`;
+
 //  if any quries regrading 3D Graph read this repo 
 // https://github.com/vasturiano/react-force-graph?tab=readme-ov-file
   return (
     <div className='imagetree' >
       <ForceGraph3D
-        backgroundColor={'#BCE4EF'}
+        backgroundColor={'rgb(61, 109, 148)'}
         linkColor={'red'}
+        linkMaterial={linkMaterial}
         linkOpacity={1}
-        nodeRelSize={10}
+        nodeRelSize={0}
+        nodeColor={getNodeColor }
         width={window.innerWidth}
         height={window.innerHeight}
-        linkCurvature={1}
-        linkCurveRotation={2}
-        linkWidth={2}
+        linkCurvature={0.5}
+        linkCurveRotation={1}
+        linkWidth={0.5}
         // minZoom={2}
         // maxZoom={5}
         graphData={graphdata}
-        nodeLabel={node => `${node.user}: ${node.description}`}
-        nodeColor={'black'}
+        nodeLabel={getNodeLabel}
         nodeAutoColorBy="user"
-        linkDirectionalParticles={2}
+        linkDirectionalParticles={1}
+        // linkThreeObjectExtend={true}
         nodeThreeObject={({ img }) => {
           const imgTexture = new THREE.TextureLoader().load(img);
           imgTexture.colorSpace = THREE.SRGBColorSpace;
@@ -93,6 +109,7 @@ const ImageTree = ({ data }) => {
       />
 
     </div>
+    
 
   );
 };
