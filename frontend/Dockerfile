@@ -1,10 +1,19 @@
-FROM node:latest
+# build step
+
+FROM node:alpine 
 
 WORKDIR /myapp
 
-COPY . .
+COPY package*.json ./
+
+
+
+#COPY . .
 
 RUN npm install
+
+COPY . ./
+
 
 
 CMD [ "npm","start" ]

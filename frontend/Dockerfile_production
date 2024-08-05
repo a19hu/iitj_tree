@@ -1,0 +1,21 @@
+# build step
+FROM node:alpine as build
+
+WORKDIR /myapp
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . ./
+RUN npm run build
+
+# release tep 
+
+FROM nginx:alpine
+
+
+COPY --from=build /myapp/build /user/share/nginx/html/
+
+
+
