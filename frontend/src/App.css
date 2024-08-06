@@ -1,7 +1,7 @@
 body{
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
-  background-color: #BCE4EF;
+  background-color: rgba(20, 95, 135, 0.469);
 }
 
 ::-webkit-scrollbar {

@@ -88,7 +88,7 @@ const DTree = ({data}) => {
     // initialDepth={2}
     // pathFunc="straight"
   nodeSize= {{ x: 100, y: 20 }}
-      translate={{ x: 100, y: 530 }}
+      translate={{ x: 100 , y: 530 }}
       // draggable={false}
       dimensions={dimensions}
   // orientation={"vertical"}

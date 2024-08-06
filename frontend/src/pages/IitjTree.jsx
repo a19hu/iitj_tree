@@ -80,13 +80,11 @@ const IitjTree = ({ data }) => {
             </li>
 
           )}
-
         </ul>
       </>
     )
   }
   return (
-
     <div className="tree">
 
       {
